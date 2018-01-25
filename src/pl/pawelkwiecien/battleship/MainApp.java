@@ -1,8 +1,15 @@
 package pl.pawelkwiecien.battleship;
 
-public class MainApp {
+import java.util.Scanner;
+
+class MainApp {
 
     public static void main(String[] args) {
-        //TODO implement
+        GameManager gameManager = new GameManager();
+        Scanner scanner = new Scanner(System.in);
+        Cell[][] gameBoard= gameManager.prepareGame();
+        gameManager.displayBoard(gameBoard);
     }
+
+
 }

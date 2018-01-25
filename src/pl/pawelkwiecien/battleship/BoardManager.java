@@ -1,12 +1,12 @@
 package pl.pawelkwiecien.battleship;
 
-public class BoardManager {
+class BoardManager {
 
-    static BoardCell[][] createBoard() {
-        BoardCell[][] gameBoard = new BoardCell[8][8];
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                gameBoard[i][j] = new BoardCell();
+    static Cell[][] createBoard() {
+        Cell[][] gameBoard = new Cell[10][10];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                gameBoard[i][j] = new Cell();
             }
         }
         return gameBoard;

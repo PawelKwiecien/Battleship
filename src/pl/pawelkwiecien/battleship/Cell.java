@@ -1,11 +1,11 @@
 package pl.pawelkwiecien.battleship;
 
-public class BoardCell {
+class Cell {
 
     private boolean shipOnCell;
     private boolean wasTargeted;
 
-    public BoardCell() {
+    Cell() {
         this.shipOnCell = false;
         this.wasTargeted = false;
     }
