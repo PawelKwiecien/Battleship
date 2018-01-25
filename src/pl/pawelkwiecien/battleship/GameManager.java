@@ -13,12 +13,8 @@ class GameManager {
         return board;
     }
 
-    boolean isGameOver() {
+    boolean isOver() {
         return gameOver;
-    }
-
-    int getShipsRemaining() {
-        return shipsRemaining;
     }
 
     void checkIfGameOver() {
@@ -27,13 +23,13 @@ class GameManager {
         }
     }
 
-    void hitShip(Cell cell) {
+    void markAsHit(Cell cell) {
         cell.setShipOnCell(false);
         cell.setShipDestroyed(true);
         shipsRemaining--;
     }
 
-    void missedShip(Cell cell) {
+    void markAsMiss(Cell cell) {
         cell.setWasTargeted(true);
     }
 }

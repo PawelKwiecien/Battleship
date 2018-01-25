@@ -12,7 +12,7 @@ class Cell {
         this.shipDestroyed = false;
     }
 
-    public boolean shipOnCell() {
+    public boolean hasShip() {
         return shipOnCell;
     }
 
