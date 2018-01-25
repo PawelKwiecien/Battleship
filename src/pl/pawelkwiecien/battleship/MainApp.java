@@ -13,6 +13,7 @@ class MainApp {
         Cell[][] gameBoard = game.prepareGame();
         Cell currentCell;
         String input;
+        int row, column;
         displayBoard(gameBoard);
 
         while (!game.isOver()) {
@@ -20,8 +21,8 @@ class MainApp {
             input = scan.nextLine().toLowerCase();
 
             if (isValid(input)) {
-                int row = generateRow(input);
-                int column = generateColumn(input);
+                row = generateRow(input);
+                column = generateColumn(input);
                 currentCell = gameBoard[row][column];
 
                 if (currentCell.hasShip()) {
