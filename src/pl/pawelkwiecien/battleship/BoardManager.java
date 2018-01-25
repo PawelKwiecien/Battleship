@@ -29,9 +29,10 @@ class BoardManager {
     static void displayBoard(Cell[][] board) {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board.length; j++) {
-                if (board[i][j].wasTargeted()) {
+                Cell currentCell = board[i][j];
+                if (currentCell.wasTargeted()) {
                     System.out.print("O|");
-                } else if (board[i][j].isShipDestroyed()) {
+                } else if (currentCell.isShipDestroyed()) {
                     System.out.print("X|");
                 } else {
                     System.out.print(" |");
