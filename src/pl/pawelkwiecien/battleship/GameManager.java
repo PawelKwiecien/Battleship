@@ -1,25 +1,11 @@
 package pl.pawelkwiecien.battleship;
 
 import static pl.pawelkwiecien.battleship.BoardManager.*;
-import static pl.pawelkwiecien.battleship.ShipsManager.*;
 
 class GameManager {
 
     private boolean gameOver = false;
     private int shipsRemaining = 20;
-
-    void displayBoard(Cell[][] board) {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
-                if (board[i][j].shipOnCell()) {
-                    System.out.print("*|");
-                } else if (!board[i][j].shipOnCell()) {
-                    System.out.print(" |");
-                }
-            }
-            System.out.println();
-        }
-    }
 
     Cell[][] prepareGame() {
         Cell[][] board = createBoard();
@@ -27,11 +13,31 @@ class GameManager {
         return board;
     }
 
-    public boolean isGameOver() {
+    boolean isGameOver() {
         return gameOver;
     }
 
-    public void setGameOver(boolean gameOver) {
+    void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
+    }
+
+    int getShipsRemaining() {
+        return shipsRemaining;
+    }
+
+    void checkIfGameOver() {
+        if (shipsRemaining == 0) {
+            setGameOver(true);
+        }
+    }
+
+    void hitShip(Cell cell) {
+        cell.setShipOnCell(false);
+        cell.setWasTargeted(true);
+        shipsRemaining--;
+    }
+
+    void missedShip(Cell cell) {
+        cell.setWasTargeted(true);
     }
 }

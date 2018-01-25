@@ -4,10 +4,12 @@ class Cell {
 
     private boolean shipOnCell;
     private boolean wasTargeted;
+    private boolean shipDestroyed;
 
     Cell() {
         this.shipOnCell = false;
         this.wasTargeted = false;
+        this.shipDestroyed = false;
     }
 
     public boolean shipOnCell() {
@@ -24,5 +26,13 @@ class Cell {
 
     public void setWasTargeted(boolean wasTargeted) {
         this.wasTargeted = wasTargeted;
+    }
+
+    public boolean isShipDestroyed() {
+        return shipDestroyed;
+    }
+
+    public void setShipDestroyed(boolean shipDestroyed) {
+        this.shipDestroyed = shipDestroyed;
     }
 }
