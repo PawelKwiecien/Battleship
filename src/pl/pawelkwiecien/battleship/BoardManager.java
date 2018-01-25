@@ -27,15 +27,17 @@ class BoardManager {
     }
 
     static void displayBoard(Cell[][] board) {
+        System.out.println("   [A][B][C][D][E][F][G][H][I][J]");
         for (int i = 0; i < board.length; i++) {
+            System.out.print("[" + (i+1) + "]");
             for (int j = 0; j < board.length; j++) {
                 Cell currentCell = board[i][j];
                 if (currentCell.wasTargeted()) {
-                    System.out.print("O|");
-                } else if (currentCell.isShipDestroyed()) {
-                    System.out.print("X|");
+                    System.out.print("[.]");
+                } else if (currentCell.hasShipDestroyed()) {
+                    System.out.print("[X]");
                 } else {
-                    System.out.print(" |");
+                    System.out.print("[ ]");
                 }
             }
             System.out.println();

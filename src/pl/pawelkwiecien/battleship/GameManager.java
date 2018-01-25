@@ -17,23 +17,19 @@ class GameManager {
         return gameOver;
     }
 
-    void setGameOver(boolean gameOver) {
-        this.gameOver = gameOver;
-    }
-
     int getShipsRemaining() {
         return shipsRemaining;
     }
 
     void checkIfGameOver() {
         if (shipsRemaining == 0) {
-            setGameOver(true);
+            this.gameOver = true;
         }
     }
 
     void hitShip(Cell cell) {
         cell.setShipOnCell(false);
-        cell.setWasTargeted(true);
+        cell.setShipDestroyed(true);
         shipsRemaining--;
     }
 

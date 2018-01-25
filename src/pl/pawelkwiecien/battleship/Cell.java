@@ -28,7 +28,7 @@ class Cell {
         this.wasTargeted = wasTargeted;
     }
 
-    public boolean isShipDestroyed() {
+    public boolean hasShipDestroyed() {
         return shipDestroyed;
     }
 
