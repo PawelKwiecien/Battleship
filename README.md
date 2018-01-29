@@ -4,8 +4,8 @@ Simplified rules (so far). Program generates an 8x8 board with 10 randomly place
 
 Player is expected to have his own board on paper with 10 randomly placed ships of size 1.
 
-Player and computer take turns in trying to destroy each other's ships.
+Player and computer take turns trying to destroy each other's ships.
 
-Game ends when one of players looses all of his ships.
+Game ends when one player looses all of his ships.
 
 Work in progress.
