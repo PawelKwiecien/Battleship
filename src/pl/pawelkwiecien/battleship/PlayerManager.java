@@ -1,6 +1,6 @@
 package pl.pawelkwiecien.battleship;
 
-public class PlayerManager {
+public abstract class PlayerManager {
 
     private boolean inPlay = true;
     private int shipsRemaining = 10;
