@@ -2,37 +2,42 @@ package pl.pawelkwiecien.battleship;
 
 class BoardManager {
 
+    private static final int NUMBER_OF_ROWS = 8;
+    private static final int NUMBER_OF_COLUMNS = 8;
+
     static Cell[][] createBoard() {
-        Cell[][] gameBoard = new Cell[8][8];
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                gameBoard[i][j] = new Cell();
+        Cell[][] gameBoard = new Cell[NUMBER_OF_COLUMNS][NUMBER_OF_ROWS];
+        for (int columnIndex = 0; columnIndex < NUMBER_OF_COLUMNS; columnIndex++) {
+            for (int rowIndex = 0; rowIndex < NUMBER_OF_ROWS; rowIndex++) {
+                gameBoard[columnIndex][rowIndex] = new Cell();
             }
         }
         return gameBoard;
     }
 
+
     static void populateBoard(Cell[][] board) {
-        int shipsRemaining = 20;
-        int row, column;
+        int shipsRemaining = 10;
+        int rowIndex, columnIndex;
         while (shipsRemaining > 0) {
-            row = (int) (Math.random() * 8);
-            column = (int) (Math.random() * 8);
-            if (board[row][column].hasShip()) {
+            columnIndex = (int) (Math.random() * NUMBER_OF_COLUMNS);
+            rowIndex = (int) (Math.random() * NUMBER_OF_ROWS);
+            if (board[columnIndex][rowIndex].hasShip()) {
                 continue;
             }
-            board[row][column].setShipOnCell(true);
+            board[columnIndex][rowIndex].setShipOnCell(true);
             shipsRemaining--;
         }
     }
 
+
     static void displayBoard(Cell[][] board) {
         System.out.println("   [A][B][C][D][E][F][G][H]");
-        for (int i = 0; i < board.length; i++) {
-            System.out.print("[" + (i+1) + "]");
-            for (int j = 0; j < board.length; j++) {
-                Cell currentCell = board[i][j];
-                if (currentCell.wasTargeted()) {
+        for (int columnIndex = 0; columnIndex < NUMBER_OF_COLUMNS; columnIndex++) {
+            System.out.print("[" + (columnIndex + 1) + "]");
+            for (int rowIndex = 0; rowIndex < NUMBER_OF_ROWS; rowIndex++) {
+                Cell currentCell = board[columnIndex][rowIndex];
+                if (currentCell.wasTargeted() && !currentCell.hasShipDestroyed()) {
                     System.out.print("[-]");
                 } else if (currentCell.hasShipDestroyed()) {
                     System.out.print("[X]");

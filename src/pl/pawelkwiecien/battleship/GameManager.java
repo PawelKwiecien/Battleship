@@ -1,35 +1,38 @@
 package pl.pawelkwiecien.battleship;
 
-import static pl.pawelkwiecien.battleship.BoardManager.*;
+import java.util.Scanner;
+
+import static pl.pawelkwiecien.battleship.BoardManager.displayBoard;
+import static pl.pawelkwiecien.commons.StaticSupportMethods.*;
 
 class GameManager {
 
-    private boolean gameOver = false;
-    private int shipsRemaining = 20;
+    static boolean playerTurn(boolean isPlayerTurn,
+                              Scanner scan,
+                              HumanPlayerManager player,
+                              Cell[][] computerBoard) {
 
-    Cell[][] prepareGame() {
-        Cell[][] board = createBoard();
-        populateBoard(board);
-        return board;
-    }
+        displayBoard(computerBoard);
+        System.out.println("Take a shot: ");
+        String input = scan.nextLine().toLowerCase();
 
-    boolean isOver() {
-        return gameOver;
-    }
-
-    void checkIfGameOver() {
-        if (shipsRemaining == 0) {
-            this.gameOver = true;
+        if (isValid(input)) {
+            Cell currentCell = computerBoard[generateRow(input)][generateColumn(input)];
+            isPlayerTurn = player.evaluateShot(currentCell);
+        } else {
+            System.out.println("Invalid cell number.\n");
         }
+
+        player.checkIfGameOver();
+        return isPlayerTurn;
     }
 
-    void markAsHit(Cell cell) {
-        cell.setShipOnCell(false);
-        cell.setShipDestroyed(true);
-        shipsRemaining--;
+
+    static boolean computerTurn(ComputerPlayerManager computer, Cell[][] playerBoard) {
+        boolean isPlayerTurn;
+        isPlayerTurn = computer.evaluateShot(playerBoard);
+        computer.checkIfGameOver();
+        return isPlayerTurn;
     }
 
-    void markAsMiss(Cell cell) {
-        cell.setWasTargeted(true);
-    }
 }

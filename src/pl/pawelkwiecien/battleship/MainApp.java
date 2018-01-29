@@ -3,45 +3,30 @@ package pl.pawelkwiecien.battleship;
 import java.util.Scanner;
 
 import static pl.pawelkwiecien.battleship.BoardManager.*;
-import static pl.pawelkwiecien.battleship.StaticSupportMethods.*;
+import static pl.pawelkwiecien.battleship.GameManager.*;
 
 class MainApp {
 
     public static void main(String[] args) {
-        GameManager game = new GameManager();
+        boolean isPlayerTurn = true;
+
         Scanner scan = new Scanner(System.in);
-        Cell[][] gameBoard = game.prepareGame();
-        Cell currentCell;
-        String input;
-        int row, column;
-        displayBoard(gameBoard);
+        HumanPlayerManager player = new HumanPlayerManager();
+        ComputerPlayerManager computer = new ComputerPlayerManager();
 
-        while (!game.isOver()) {
-            System.out.println("Take a shot: ");
-            input = scan.nextLine().toLowerCase();
+        Cell[][] computerBoard = createBoard();
+        populateBoard(computerBoard);
+        Cell[][] playerBoard = createBoard();
 
-            if (isValid(input)) {
-                row = generateRow(input);
-                column = generateColumn(input);
-                currentCell = gameBoard[row][column];
 
-                if (currentCell.hasShip()) {
-                    game.markAsHit(currentCell);
-                } else if (!currentCell.hasShip() && !currentCell.wasTargeted()) {
-                    game.markAsMiss(currentCell);
-                } else if (currentCell.wasTargeted()) {
-                    System.out.println("This cell was already targeted");
-                    continue;
-                }
+        while (player.inPlay() && computer.inPlay()) {
+            if (isPlayerTurn) {
+                isPlayerTurn = playerTurn(isPlayerTurn, scan, player, computerBoard);
             } else {
-                System.out.println("Invalid cell number.");
-                continue;
+                isPlayerTurn = computerTurn(computer, playerBoard);
             }
-
-
-            displayBoard(gameBoard);
-            game.checkIfGameOver();
         }
-        System.out.println("\nGAME OVER");
+        System.out.println("\nGAME OVER!");
     }
+
 }
