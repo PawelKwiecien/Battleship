@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static pl.pawelkwiecien.battleship.BoardManager.*;
 import static pl.pawelkwiecien.battleship.GameManager.*;
-import static pl.pawelkwiecien.commons.StaticConsoleMessages.printGameOver;
+import static pl.pawelkwiecien.commons.StaticConsoleMessages.printGameOverMessage;
 
 class MainApp {
 
@@ -28,7 +28,7 @@ class MainApp {
                 isPlayerTurn = computerTurn(computer, playerBoard);
             }
         }
-        printGameOver();
+        printGameOverMessage();
     }
 
 }

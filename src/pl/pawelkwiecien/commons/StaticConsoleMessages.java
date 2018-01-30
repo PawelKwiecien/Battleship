@@ -13,32 +13,32 @@ public class StaticConsoleMessages {
     private static final String COLUMN_NAMES = "   [A][B][C][D][E][F][G][H]";
 
 
-    public static void printWasTargeted() {
+    public static void printWasTargetedMessage() {
         System.out.println(THIS_CELL_WAS_ALREADY_TARGETED);
     }
 
 
-    public static void printMissed() {
+    public static void printMissedMessage() {
         System.out.println(SORRY_IT_S_A_MISS);
     }
 
 
-    public static void printHit() {
+    public static void printHitMessage() {
         System.out.println(ITS_A_HIT);
     }
 
 
-    public static void printTakeAShot() {
+    public static void printTakeAShotMessage() {
         System.out.println(TAKE_A_SHOT);
     }
 
 
-    public static void printInvalidCellNumber() {
+    public static void printInvalidCellNumberMessage() {
         System.out.println(INVALID_CELL_NUMBER);
     }
 
 
-    public static void printGameOver() {
+    public static void printGameOverMessage() {
         System.out.println(GAME_OVER);
     }
 

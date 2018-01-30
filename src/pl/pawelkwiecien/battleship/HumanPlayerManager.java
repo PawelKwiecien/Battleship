@@ -10,14 +10,14 @@ class HumanPlayerManager extends PlayerManager{
 
     public boolean evaluateShot(Cell cell) {
         if (cell.wasTargeted()) {
-            printWasTargeted();
+            printWasTargetedMessage();
             return true;
         } else if (!cell.hasShip() && !cell.wasTargeted()) {
-            printMissed();
+            printMissedMessage();
             markAsMiss(cell);
             return false;
         } else if (cell.hasShip()) {
-            printHit();
+            printHitMessage();
             markAsHit(cell);
             return true;
         }

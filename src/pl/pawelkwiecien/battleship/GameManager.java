@@ -14,14 +14,14 @@ class GameManager {
                               Cell[][] computerBoard) {
 
         displayBoard(computerBoard);
-        printTakeAShot();
+        printTakeAShotMessage();
         String input = scan.nextLine().toLowerCase();
 
         if (isValid(input)) {
             Cell currentCell = computerBoard[generateRow(input)][generateColumn(input)];
             isPlayerTurn = player.evaluateShot(currentCell);
         } else {
-            printInvalidCellNumber();
+            printInvalidCellNumberMessage();
         }
 
         player.checkIfGameOver();
