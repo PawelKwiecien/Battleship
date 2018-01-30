@@ -23,7 +23,7 @@ class MainApp {
 
         while (player.inPlay() && computer.inPlay()) {
             if (isPlayerTurn) {
-                isPlayerTurn = playerTurn(isPlayerTurn, scan, player, computerBoard);
+                isPlayerTurn = playerTurn(scan, player, computerBoard);
             } else {
                 isPlayerTurn = computerTurn(computer, playerBoard);
             }

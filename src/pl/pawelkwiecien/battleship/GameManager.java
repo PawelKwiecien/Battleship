@@ -8,11 +8,11 @@ import static pl.pawelkwiecien.commons.StaticSupportMethods.*;
 
 class GameManager {
 
-    static boolean playerTurn(boolean isPlayerTurn,
-                              Scanner scan,
+    static boolean playerTurn(Scanner scan,
                               HumanPlayerManager player,
                               Cell[][] computerBoard) {
 
+        boolean isPlayerTurn = false;
         displayBoard(computerBoard);
         printTakeAShotMessage();
         String input = scan.nextLine().toLowerCase();
