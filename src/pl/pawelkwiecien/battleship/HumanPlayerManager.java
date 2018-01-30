@@ -1,5 +1,7 @@
 package pl.pawelkwiecien.battleship;
 
+import static pl.pawelkwiecien.commons.StaticConsoleMessages.*;
+
 class HumanPlayerManager extends PlayerManager{
 
     private boolean inPlay = true;
@@ -8,14 +10,14 @@ class HumanPlayerManager extends PlayerManager{
 
     public boolean evaluateShot(Cell cell) {
         if (cell.wasTargeted()) {
-            System.out.println("This cell was already targeted.\n");
+            printWasTargeted();
             return true;
         } else if (!cell.hasShip() && !cell.wasTargeted()) {
-            System.out.println("\nSorry, it's a miss.\n");
+            printMissed();
             markAsMiss(cell);
             return false;
         } else if (cell.hasShip()) {
-            System.out.println("\nIt's a HIT!\n");
+            printHit();
             markAsHit(cell);
             return true;
         }

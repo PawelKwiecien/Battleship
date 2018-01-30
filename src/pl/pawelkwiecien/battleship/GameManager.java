@@ -3,6 +3,7 @@ package pl.pawelkwiecien.battleship;
 import java.util.Scanner;
 
 import static pl.pawelkwiecien.battleship.BoardManager.displayBoard;
+import static pl.pawelkwiecien.commons.StaticConsoleMessages.*;
 import static pl.pawelkwiecien.commons.StaticSupportMethods.*;
 
 class GameManager {
@@ -13,14 +14,14 @@ class GameManager {
                               Cell[][] computerBoard) {
 
         displayBoard(computerBoard);
-        System.out.println("Take a shot: ");
+        printTakeAShot();
         String input = scan.nextLine().toLowerCase();
 
         if (isValid(input)) {
             Cell currentCell = computerBoard[generateRow(input)][generateColumn(input)];
             isPlayerTurn = player.evaluateShot(currentCell);
         } else {
-            System.out.println("Invalid cell number.\n");
+            printInvalidCellNumber();
         }
 
         player.checkIfGameOver();

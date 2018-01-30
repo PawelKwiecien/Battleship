@@ -5,8 +5,6 @@ public abstract class PlayerManager {
     private boolean inPlay = true;
     private int shipsRemaining = 10;
 
-    public PlayerManager() {}
-
 
     public boolean inPlay() {
         return inPlay;
@@ -18,14 +16,14 @@ public abstract class PlayerManager {
         }
     }
 
-    public void markAsHit(Cell cell) {
+    void markAsHit(Cell cell) {
         cell.setShipOnCell(false);
         cell.setWasTargeted(true);
         cell.setShipDestroyed(true);
         shipsRemaining--;
     }
 
-    public void markAsMiss(Cell cell) {
+    void markAsMiss(Cell cell) {
         cell.setWasTargeted(true);
     }
 

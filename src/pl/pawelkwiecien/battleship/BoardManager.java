@@ -1,5 +1,7 @@
 package pl.pawelkwiecien.battleship;
 
+import static pl.pawelkwiecien.commons.StaticConsoleMessages.*;
+
 class BoardManager {
 
     private static final int NUMBER_OF_ROWS = 8;
@@ -32,9 +34,9 @@ class BoardManager {
 
 
     static void displayBoard(Cell[][] board) {
-        System.out.println("   [A][B][C][D][E][F][G][H]");
+        printColumnNames();
         for (int columnIndex = 0; columnIndex < NUMBER_OF_COLUMNS; columnIndex++) {
-            System.out.print("[" + (columnIndex + 1) + "]");
+            printRowName(columnIndex+1);
             for (int rowIndex = 0; rowIndex < NUMBER_OF_ROWS; rowIndex++) {
                 Cell currentCell = board[columnIndex][rowIndex];
                 if (currentCell.wasTargeted() && !currentCell.hasShipDestroyed()) {

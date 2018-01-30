@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 import static pl.pawelkwiecien.battleship.BoardManager.*;
 import static pl.pawelkwiecien.battleship.GameManager.*;
+import static pl.pawelkwiecien.commons.StaticConsoleMessages.printGameOver;
 
 class MainApp {
 
     public static void main(String[] args) {
+
         boolean isPlayerTurn = true;
 
         Scanner scan = new Scanner(System.in);
@@ -26,7 +28,7 @@ class MainApp {
                 isPlayerTurn = computerTurn(computer, playerBoard);
             }
         }
-        System.out.println("\nGAME OVER!");
+        printGameOver();
     }
 
 }
